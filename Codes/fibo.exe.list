@@ -1,0 +1,90 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+fibo.exe -- emu8086 assembler version: 4.08  
+ 
+[ 03-03-2021  --  14:17:44 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       data segment
+[   2]    0000: 0A                                    count db 0Ah
+[   3]    0001: 00 00 00 00 00 00 00 00 00 00 00 00   fibo db 20 dup(0)
+                00 00 00 00 00 00 00 00             
+[   4]        :                                       
+[   5]        :                                       data ends
+[   6]        :                                       
+[   7]        :                                       
+[   8]        :                                       code segment
+[   9]        :                                       assume cs: code,ds:data
+[  10]    0020: B8 00 00                              start: mov ax,data
+[  11]    0023: 8E D8                                 mov ds,ax
+[  12]    0025: 8A 0E 00 00                           mov cl,count
+[  13]    0029: BE 01 00                              lea si,fibo
+[  14]    002C: B0 00                                 mov al,00
+[  15]    002E: B3 01                                 mov bl,01
+[  16]    0030: 88 04                                 mov [si],al
+[  17]    0032: 46                                    inc si
+[  18]    0033: 88 1C                                 mov [si],bl
+[  19]    0035: 46                                    back:inc si
+[  20]    0036: 8A 44 FE                              mov al,[si-2]
+[  21]    0039: 02 44 FF                              add al,[si-1]
+[  22]    003C: 88 04                                 mov [si],al
+[  23]    003E: E2 F5                                 loop back
+[  24]        :                                       
+[  25]        :                                       
+[  26]        :                                       
+[  27]        :                                       
+[  28]    0040: B4 4C                                 mov ah,4ch
+[  29]    0042: CD 21                                 int 21h
+[  30]        :                                       code ends
+[  31]        :                                       end start
+[  32]        :                                       
+[  33]        :                                       
+[  34]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 44      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 00      -   SP - stack pointer (h.byte)
+0012: 7B      -   check sum (l.byte)
+0013: 48      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 02      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 02      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
